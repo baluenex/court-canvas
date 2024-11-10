@@ -15,6 +15,10 @@ ul {
     width: 50%;
 }
 
+.compatible {
+    text-align: center;
+}
+
 .initialize {
     margin-bottom: 20px;
     width: 10%;
