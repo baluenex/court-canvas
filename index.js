@@ -59,23 +59,32 @@ window.addEventListener('load', () => {
     function clear(x, y) {
       // canvasを白紙に戻す
       context.clearRect(0, 0, canvas.width, canvas.height);
+
+      // canvasサイズを初期化する
+      document.getElementById('draw-area').setAttribute('width', window.innerWidth);
+      document.getElementById('draw-area').setAttribute('height', window.innerHeight);
       context.beginPath();
+
       // 書式を初期化する
       context.lineCap = "butt";
       context.lineJoin = "miter";
       context.lineWidth = 1;
       context.strokeStyle = "#000000";
+
+      // コートを描写する
       // コート全体の枠
-      context.strokeRect(x+180, y+75, 800, 400);
+      const xStart = 180;
+      const yStart = 200;
+      context.strokeRect(x+xStart, y+yStart, 800, 400);
       // アレイ
-      context.strokeRect(x+180, y+75, 800, 40);
-      context.strokeRect(x+180, y+75+360, 800, 40);
+      context.strokeRect(x+xStart, y+yStart, 800, 40);
+      context.strokeRect(x+xStart, y+yStart+360, 800, 40);
       // サービスボックス
-      context.strokeRect(x+400, y+75+40, 350, 400-40*2);
-      context.strokeRect(x+400, y+75+40, 350, (400-40*2)/2);
+      context.strokeRect(x+xStart+220, y+yStart+40, 350, 400-40*2);
+      context.strokeRect(x+xStart+220, y+yStart+40, 350, (400-40*2)/2);
       // ネット
-      context.moveTo(x+180+800/2, y+40);
-      context.lineTo(x+180+800/2, y+520);
+      context.moveTo(x+xStart+400, y+yStart-35);
+      context.lineTo(x+xStart+400, y+yStart+435);
       context.stroke();
     }
   
@@ -104,11 +113,7 @@ window.addEventListener('load', () => {
     function initEventHandler() {
       const clearButton = document.querySelector('#clear-button');
       clearButton.addEventListener('click', (event) => {
-        const rect = event.target.getBoundingClientRect();
-        let x = event.x - rect.left;
-        let y = event.y - rect.top;
-
-        clear(x, y);
+        clear(100, 0);
       });
   
       canvas.addEventListener('mousedown', dragStart);

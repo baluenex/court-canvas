@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.initialize-button {
+    text-align: center;
+}
+
+ul {
+    margin: 20px auto;
+    width: 50%;
+}
+
+.initialize {
+    margin-bottom: 20px;
+    width: 10%;
+    height: 70px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 3px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #499ef9;
+}
+
+.initialize:hover {
+    box-shadow: 0px 10px 3px rgba(0, 0, 0, 0.5);
+    transform: scale(0.98);
+  }
+
+.canvas {
+    margin: 5%;
+    border: 1px solid #000000;
+}
