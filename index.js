@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
     }
   
     // 書式設定とテニスコートを初期化する
-    function clear(x, y) {
+    function clear() {
       // canvasを白紙に戻す
       context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -74,19 +74,19 @@ window.addEventListener('load', () => {
       context.strokeStyle = "#000000";
 
       // コートを描写する
-      const xStart = windowInnerWidth*1/8;
-      const yStart = windowInnerHeight*1/4;
+      const xStart = windowInnerWidth * 1/5;
+      const yStart = windowInnerHeight * 1/4;
       // コート全体の枠
-      context.strokeRect(x+xStart, y+yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
+      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
       // アレー
-      context.strokeRect(x+xStart, y+yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
-      context.strokeRect(x+xStart, y+yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
+      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
+      context.strokeRect(xStart, yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
       // サービスボックス
-      context.strokeRect(x+xStart+windowInnerWidth*1/8, y+yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
-      context.strokeRect(x+xStart+windowInnerWidth*1/8, y+yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
+      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
+      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
       // ネット
-      context.moveTo(x+xStart+windowInnerWidth*1/4, y+yStart-windowInnerHeight*1/20);
-      context.lineTo(x+xStart+windowInnerWidth*1/4, y+yStart+windowInnerHeight*3/5);
+      context.moveTo(xStart+windowInnerWidth*1/4, yStart-windowInnerHeight*1/20);
+      context.lineTo(xStart+windowInnerWidth*1/4, yStart+windowInnerHeight*3/5);
       context.stroke();
     }
   
@@ -115,7 +115,7 @@ window.addEventListener('load', () => {
     function initEventHandler() {
       const clearButton = document.querySelector('#clear-button');
       clearButton.addEventListener('click', (event) => {
-        clear(100, 0);
+        clear();
       });
   
       canvas.addEventListener('mousedown', dragStart);

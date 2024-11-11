@@ -6,7 +6,7 @@ h2 {
     text-align: center;
 }
 
-.initialize-button {
+.initialize {
     text-align: center;
 }
 
@@ -19,7 +19,7 @@ ul {
     text-align: center;
 }
 
-.initialize {
+.initialize-button {
     margin-bottom: 20px;
     width: 10%;
     height: 70px;
@@ -32,7 +32,7 @@ ul {
     background-color: #499ef9;
 }
 
-.initialize:hover {
+.initialize-button:hover {
     box-shadow: 0px 10px 3px rgba(0, 0, 0, 0.5);
     transform: scale(0.98);
   }
