@@ -74,20 +74,24 @@ window.addEventListener('load', () => {
       context.strokeStyle = "#000000";
 
       // コートを描写する
-      const xStart = windowInnerWidth * 1/5;
-      const yStart = windowInnerHeight * 1/4;
-      // コート全体の枠
-      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
-      // アレー
-      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
-      context.strokeRect(xStart, yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
-      // サービスボックス
-      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
-      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
-      // ネット
-      context.moveTo(xStart+windowInnerWidth*1/4, yStart-windowInnerHeight*1/20);
-      context.lineTo(xStart+windowInnerWidth*1/4, yStart+windowInnerHeight*3/5);
-      context.stroke();
+      if (windowInnerWidth <= 428) {
+        console.log("no responsive...")
+      } else {
+        const xStart = windowInnerWidth * 1/5;
+        const yStart = windowInnerHeight * 1/4;
+        // コート全体の枠
+        context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
+        // アレー
+        context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
+        context.strokeRect(xStart, yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
+        // サービスボックス
+        context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
+        context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
+        // ネット
+        context.moveTo(xStart+windowInnerWidth*1/4, yStart-windowInnerHeight*1/20);
+        context.lineTo(xStart+windowInnerWidth*1/4, yStart+windowInnerHeight*3/5);
+        context.stroke();
+      }
     }
   
     // マウスのドラッグを開始したらisDragのフラグをtrueにしてdraw関数内で

@@ -20,12 +20,12 @@ ul {
 }
 
 .initialize-button {
-    margin-bottom: 20px;
-    width: 10%;
-    height: 70px;
-    margin-top: 20px;
-    font-size: 1.5rem;
+    width: 50%;
+    max-width: 600px;
+    min-width: 200px;
+    margin: 20px;
     padding: 15px 20px;
+    font-size: 1.5rem;
     border-radius: 10px;
     box-shadow: 0px 6px 3px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
