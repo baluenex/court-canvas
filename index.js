@@ -74,13 +74,24 @@ window.addEventListener('load', () => {
       context.strokeStyle = "#000000";
 
       // コートを描写する
-      if (windowInnerWidth <= 428) {
-        console.log("no responsive...")
+      const xStart = windowInnerWidth * 1/5;
+      const yStart = windowInnerHeight * 1/4;
+      // コート全体の枠
+      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
+      // レスポンシブ対応、幅がタブレット以下の場合
+      if (windowInnerWidth <= 1024) {
+        // アレー
+        context.strokeRect(xStart, yStart, windowInnerWidth*1/20, windowInnerHeight*1/2);
+        context.strokeRect(xStart+windowInnerWidth*1/2, yStart, windowInnerWidth*1/20, windowInnerHeight*1/2);
+        // サービスボックス
+        context.strokeRect(xStart+windowInnerWidth*1/20, yStart+windowInnerHeight*1/8, windowInnerWidth*9/20, windowInnerHeight*1/4);
+        context.strokeRect(xStart+windowInnerWidth*1/20, yStart+windowInnerHeight*1/8, windowInnerWidth*9/40, windowInnerHeight*1/4);
+        // ネット
+        context.moveTo(xStart-windowInnerWidth*1/20, yStart+windowInnerHeight*1/4);
+        context.lineTo(xStart+windowInnerWidth*3/5, yStart+windowInnerHeight*1/4);
+        context.stroke();
+      // PCの場合
       } else {
-        const xStart = windowInnerWidth * 1/5;
-        const yStart = windowInnerHeight * 1/4;
-        // コート全体の枠
-        context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
         // アレー
         context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
         context.strokeRect(xStart, yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
