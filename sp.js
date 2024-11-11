@@ -79,14 +79,14 @@ window.addEventListener('load', () => {
       // コート全体の枠
       context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
       // アレー
-      context.strokeRect(xStart, yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
-      context.strokeRect(xStart, yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
+      context.strokeRect(xStart, yStart, windowInnerWidth*1/20, windowInnerHeight*1/2);
+      context.strokeRect(xStart+windowInnerWidth*1/2, yStart, windowInnerWidth*1/20, windowInnerHeight*1/2);
       // サービスボックス
-      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
-      context.strokeRect(xStart+windowInnerWidth*1/8, yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
+      context.strokeRect(xStart+windowInnerWidth*1/20, yStart+windowInnerHeight*1/8, windowInnerWidth*9/20, windowInnerHeight*1/4);
+      context.strokeRect(xStart+windowInnerWidth*1/20, yStart+windowInnerHeight*1/8, windowInnerWidth*9/40, windowInnerHeight*1/4);
       // ネット
-      context.moveTo(xStart+windowInnerWidth*1/4, yStart-windowInnerHeight*1/20);
-      context.lineTo(xStart+windowInnerWidth*1/4, yStart+windowInnerHeight*3/5);
+      context.moveTo(xStart-windowInnerWidth*1/20, yStart+windowInnerHeight*1/4);
+      context.lineTo(xStart+windowInnerWidth*3/5, yStart+windowInnerHeight*1/4);
       context.stroke();
     }
   
@@ -118,12 +118,14 @@ window.addEventListener('load', () => {
         clear();
       });
   
-      canvas.addEventListener('mousedown', dragStart);
-      canvas.addEventListener('mouseup', dragEnd);
-      canvas.addEventListener('mousemove', (event) => {
+      canvas.addEventListener('touchstart', dragStart);
+      canvas.addEventListener('touchend', dragEnd);
+      canvas.addEventListener('touchmove', (event) => {
+        // 指を動かしている間は画面スクロールを禁止する
+        event.preventDefault();
         const rect = event.target.getBoundingClientRect();
-        let x = event.x - rect.left;
-        let y = event.y - rect.top;
+        let x = event.touches[0].clientX - rect.left;
+        let y = event.touches[0].clientY - rect.top;
 
         draw(x, y);
       });
