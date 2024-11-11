@@ -61,8 +61,10 @@ window.addEventListener('load', () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       // canvasサイズを初期化する
-      document.getElementById('draw-area').setAttribute('width', window.innerWidth);
-      document.getElementById('draw-area').setAttribute('height', window.innerHeight);
+      const windowInnerWidth = window.innerWidth;
+      const windowInnerHeight = window.innerHeight;
+      document.getElementById('draw-area').setAttribute('width', windowInnerWidth);
+      document.getElementById('draw-area').setAttribute('height', windowInnerHeight);
       context.beginPath();
 
       // 書式を初期化する
@@ -72,19 +74,19 @@ window.addEventListener('load', () => {
       context.strokeStyle = "#000000";
 
       // コートを描写する
+      const xStart = windowInnerWidth*1/8;
+      const yStart = windowInnerHeight*1/4;
       // コート全体の枠
-      const xStart = 180;
-      const yStart = 200;
-      context.strokeRect(x+xStart, y+yStart, 800, 400);
-      // アレイ
-      context.strokeRect(x+xStart, y+yStart, 800, 40);
-      context.strokeRect(x+xStart, y+yStart+360, 800, 40);
+      context.strokeRect(x+xStart, y+yStart, windowInnerWidth*1/2, windowInnerHeight*1/2);
+      // アレー
+      context.strokeRect(x+xStart, y+yStart, windowInnerWidth*1/2, windowInnerHeight*1/20);
+      context.strokeRect(x+xStart, y+yStart+windowInnerHeight*1/2, windowInnerWidth*1/2, windowInnerHeight*1/20);
       // サービスボックス
-      context.strokeRect(x+xStart+220, y+yStart+40, 350, 400-40*2);
-      context.strokeRect(x+xStart+220, y+yStart+40, 350, (400-40*2)/2);
+      context.strokeRect(x+xStart+windowInnerWidth*1/8, y+yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/20);
+      context.strokeRect(x+xStart+windowInnerWidth*1/8, y+yStart+windowInnerHeight*1/20, windowInnerWidth*1/4, windowInnerHeight*9/40);
       // ネット
-      context.moveTo(x+xStart+400, y+yStart-35);
-      context.lineTo(x+xStart+400, y+yStart+435);
+      context.moveTo(x+xStart+windowInnerWidth*1/4, y+yStart-windowInnerHeight*1/20);
+      context.lineTo(x+xStart+windowInnerWidth*1/4, y+yStart+windowInnerHeight*3/5);
       context.stroke();
     }
   
